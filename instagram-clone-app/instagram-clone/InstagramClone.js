@@ -5,19 +5,48 @@ import {
     Text,
     View,
     FlatList,
-    Image
+    Image,
+    TouchableOpacity,
+    SafeAreaView
 } from 'react-native';
 import Constants from 'expo-constants';
+import {Feather} from '@expo/vector-icons';
+import Stories from './Stories';
 import data from './data';
+
+
+const INSTAGRAM_LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/800px-Instagram_logo.svg.png";
 
 export default function Instagram() {
 
+
+    function runderItem({ item, index }) {
+
+        if (index === 0) {
+            return (
+                <>
+                    <View style={styles.stories}>
+                        <Stories stories={data.stories} profile={data.profile} />
+                    </View>
+                </>
+            );
+        } else {
+            return;
+        }
+    }
+
     return (
-        <View>
-            <View style={styles.container}>
-                <Text>{'\n'}</Text>
-                <Text>Instagram App {'\n'}</Text>
-                <StatusBar style='auto' />
+        <SafeAreaView style={styles.container}>
+            <StatusBar style="dark" />
+            <View style={styles.header}>
+                <TouchableOpacity>
+                    <Feather name="camera" size={24} />
+                </TouchableOpacity>
+                <Image source={{uri : INSTAGRAM_LOGO}} style={styles.logo}/>
+
+                <TouchableOpacity>
+                    <Feather name="send" size={24} />
+                </TouchableOpacity>
             </View>
             <FlatList
                 data={data.articles}
@@ -37,7 +66,7 @@ export default function Instagram() {
                 showsVerticalScrollIndicator={false}
             />
             <StatusBar style='auto' />
-        </View>
+        </SafeAreaView>
 
     );
 }
