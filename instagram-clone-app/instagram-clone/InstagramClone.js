@@ -24,7 +24,7 @@ export default function Instagram() {
                 renderItem={({ item }) => (
                     <View style='auto'>
                         <Image
-                            //style={styles.image} 
+                            style={styles.image}
                             source={item.image}
                         />
 
@@ -53,6 +53,11 @@ const styles = StyleSheet.create({
         padding: 10,
         borderBottomWidth: 1,
         borderBottomColor: 'lightgray'
+    },
+
+    image: {
+        width: '100%',
+        height: 200
     },
 
     header: {
