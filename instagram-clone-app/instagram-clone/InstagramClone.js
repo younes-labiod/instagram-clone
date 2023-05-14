@@ -10,17 +10,17 @@ import {
     SafeAreaView
 } from 'react-native';
 import Constants from 'expo-constants';
-import {Feather} from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 import Stories from './Stories';
 import data from './data';
-
+import Article from './Article';
 
 const INSTAGRAM_LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/800px-Instagram_logo.svg.png";
 
 export default function Instagram() {
 
 
-    function runderItem({ item, index }) {
+    function renderItem({ item, index }) {
 
         if (index === 0) {
             return (
@@ -28,10 +28,14 @@ export default function Instagram() {
                     <View style={styles.stories}>
                         <Stories stories={data.stories} profile={data.profile} />
                     </View>
+
+                    <Article item={item} />
                 </>
             );
         } else {
-            return;
+            return (
+                <Article item={item} />
+            );
         }
     }
 
@@ -42,30 +46,19 @@ export default function Instagram() {
                 <TouchableOpacity>
                     <Feather name="camera" size={24} />
                 </TouchableOpacity>
-                <Image source={{uri : INSTAGRAM_LOGO}} style={styles.logo}/>
+                <Image source={{ uri: INSTAGRAM_LOGO }} style={styles.logo} />
 
                 <TouchableOpacity>
                     <Feather name="send" size={24} />
                 </TouchableOpacity>
             </View>
+
             <FlatList
                 data={data.articles}
-                renderItem={({ item }) => (
-                    <View style='auto'>
-                        <Image
-                            style={styles.image}
-                            source={item.image}
-                        />
-
-                        <Text>name: {item.name}</Text>
-                        <Text>likes: {item.likes}</Text>
-                        <Text>comments: {item.comments}</Text>
-                    </View>
-                )}
+                renderItem={renderItem}
                 keyExtractor={(item) => item.id.toString()}
                 showsVerticalScrollIndicator={false}
             />
-            <StatusBar style='auto' />
         </SafeAreaView>
 
     );
@@ -74,21 +67,8 @@ export default function Instagram() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'azure',
-        alignItems: 'center',
-        justifyContent: 'center',
+        paddingTop: Constants.statusBarHeight
     },
-    itemContainer: {
-        padding: 10,
-        borderBottomWidth: 1,
-        borderBottomColor: 'lightgray'
-    },
-
-    image: {
-        width: '100%',
-        height: 200
-    },
-
     header: {
         borderBottomWidth: 1,
         borderBottomColor: '#dbdbdb',
