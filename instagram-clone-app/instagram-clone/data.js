@@ -7,7 +7,7 @@ const initialData = {
       id: 1,
       avatar: require("../assets/instagram-clone-images/avatar1.jpg"),
       name: 'Younes Labiod',
-      isSeen: false,
+      isSeen: true,
     },
 
     {
