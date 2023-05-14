@@ -5,7 +5,7 @@ import Story from "./Story";
 
 export default function Stories({ stories, profile }) {
 
-    function runderItem({ item, index }) {
+    function renderItem({ item, index }) {
 
         if (index === 0) {
             return (

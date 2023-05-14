@@ -38,8 +38,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 4,
     },
     avatarBorder: {
-        width: 54,
-        height: 54,
+        width: 50,
+        height: 50,
         borderRadius: 25,
         borderWidth: 1,
         margin: 4,
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     avatar: {
         width: 50,
         height: 50,
-        borderRadius: 25,
+        borderRadius: 25
     },
     plusIcon: {
         overflow: 'hidden',
