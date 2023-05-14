@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     avatar: {
         width: 50,
         height: 50,
-        marginTop:17,
+        marginTop: 17,
         borderRadius: 25
     },
     plusIcon: {

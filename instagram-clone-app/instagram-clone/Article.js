@@ -1,5 +1,5 @@
 import data from "./data";
-import React from "react";
+import React, { useState } from "react";
 import {
     StyleSheet,
     View,
@@ -12,6 +12,9 @@ import {
 import { Feather } from '@expo/vector-icons'
 
 export default function Article({ item }) {
+
+    const[likes, setLike] = useState(item.likes);
+    //const[likes, setLike] = useState(data.articles.find(article => article.id === item.id).likes);
 
     return (
         <View style={styles.article}>
@@ -57,7 +60,7 @@ export default function Article({ item }) {
             </View>
 
             <View style={styles.info}>
-                <Text style={styles.likes}>likes</Text>
+                <Text style={styles.likes}> {likes} likes</Text>
                 <Text style={styles.commentCount}>View all comments </Text>
 
             </View>
