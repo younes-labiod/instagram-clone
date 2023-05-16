@@ -15,8 +15,17 @@ export default function Article({ item }) {
 
     const [likes, setLikes] = useState(item.likes);
     const [commentCount, setCommentCount] = useState(item.commentCount);
+    const [comment, setComment] = useState('');
     const [isLiked, setIsLiked] = useState(false);
     //const[likes, setLike] = useState(data.articles.find(article => article.id === item.id).likes);
+
+    function handleComment() {
+        console.log("Handle comment");
+        setCommentCount(prevCommentCount => parseInt(prevCommentCount, 10) + 1);
+        /*Alert.prompt("Leave a comment", "", text => {
+            setComment(text);
+        })*/
+    };
 
     return (
         <View style={styles.article}>
@@ -60,7 +69,7 @@ export default function Article({ item }) {
                         <Feather name="heart" size={24} color={isLiked ? "red" : "black"} />
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.actionButton}>
+                    <TouchableOpacity style={styles.actionButton} onPress={handleComment}>
                         <Feather name="message-circle" size={24} />
                     </TouchableOpacity>
 
