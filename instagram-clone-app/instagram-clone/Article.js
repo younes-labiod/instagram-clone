@@ -23,7 +23,7 @@ export default function Article({ item }) {
         console.log("Handle comment");
         setCommentCount(prevCommentCount => parseInt(prevCommentCount, 10) + 1);
         /*Alert.prompt("Leave a comment", "", text => {
-            setComment(text);
+            setComment(textt);
         })*/
     };
 
