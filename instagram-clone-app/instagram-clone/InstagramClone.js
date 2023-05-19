@@ -15,8 +15,12 @@ import Stories from './Stories';
 import data from './data';
 import Article from './Article';
 import { Camera } from 'expo-camera';
+import { useEffect } from 'react';
+import { Permissions } from 'expo';
+
 
 const INSTAGRAM_LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/800px-Instagram_logo.svg.png";
+
 
 export default function Instagram() {
 
@@ -24,7 +28,18 @@ export default function Instagram() {
     const [showCamera, setShowCamera] = useState(false);
     const [cameraType, setCameraType] = useState(Camera.Constants.Type.back);
 
+    
+    // Inside your Instagram component
+    /*useEffect(() => {
+        (async () => {
+            const { status } = await Permissions.askAsync(Permissions.CAMERA);
+            if (status !== 'granted') {
+                console.log('Camera permission not granted');
+            }
+        })();
+    }, []);*/
     function renderItem({ item, index }) {
+
 
         if (index === 0) {
             return (
@@ -111,13 +126,10 @@ const styles = StyleSheet.create({
         backgroundColor: "#fafafa",
     },
     camera: {
-        flex: 1
+        height:650
     },
     cameraContainer: {
-        flex: 1,
-        backgroundColor: 'transparent',
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-        padding: 20
+
+        height:650
     }
 });
