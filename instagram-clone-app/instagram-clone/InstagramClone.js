@@ -14,11 +14,15 @@ import { Feather } from '@expo/vector-icons';
 import Stories from './Stories';
 import data from './data';
 import Article from './Article';
+import { Camera } from 'expo-camera';
 
 const INSTAGRAM_LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/800px-Instagram_logo.svg.png";
 
 export default function Instagram() {
 
+
+    const [showCamera, setShowCamera] = useState(false);
+    const [cameraType, setCameraType] = useState(Camera.Constants.Type.back);
 
     function renderItem({ item, index }) {
 
@@ -43,7 +47,11 @@ export default function Instagram() {
         <SafeAreaView style={styles.container}>
             <StatusBar style="dark" />
             <View style={styles.header}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => {
+                    setShowCamera(!showCamera);
+                    setCameraType(cameraType === Camera.Constants.Type.back ? Camera.Constants.Type.front : Camera.Constants.Type.back);
+                }
+                }>
                     <Feather name="camera" size={24} />
                 </TouchableOpacity>
                 <Image source={{ uri: INSTAGRAM_LOGO }} style={styles.logo} />
@@ -59,6 +67,18 @@ export default function Instagram() {
                 keyExtractor={(item) => item.id.toString()}
                 showsVerticalScrollIndicator={false}
             />
+
+            {
+                showCamera && (
+                    <Camera style={styles.camera} type={cameraType} >
+                        <View style={styles.cameraContainer}>
+                            <TouchableOpacity onPress={() => { setShowCamera(false) }}>
+                                <Feather name='x' size={24} color="white" />
+                            </TouchableOpacity>
+                        </View>
+                    </Camera>
+                )
+            }
         </SafeAreaView>
 
     );
