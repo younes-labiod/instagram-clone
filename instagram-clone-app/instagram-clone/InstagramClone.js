@@ -109,5 +109,15 @@ const styles = StyleSheet.create({
         height: 104,
         padding: 10,
         backgroundColor: "#fafafa",
+    },
+    camera: {
+        flex: 1
+    },
+    cameraContainer: {
+        flex: 1,
+        backgroundColor: 'transparent',
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        padding: 20
     }
 });
